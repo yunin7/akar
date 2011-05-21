@@ -2,17 +2,13 @@
 
 import os, sys
 
-def rel(*x):
-    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
-
-# Django settings for myblog project.
+def rel(*args):
+    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *args)
 
 DEBUG = True
 
 # start django-registration settings
-
 ACCOUNT_ACTIVATION_DAYS = 2 # кол-во дней для хранения кода активации
-
 # для отправки кода активации
 AUTH_USER_EMAIL_UNIQUE = False
 EMAIL_HOST = 'localhost'
@@ -21,7 +17,6 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'info@akarinvest.ru'
-
 # end django-registration settings
 
 ADMINS = (
@@ -52,25 +47,20 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-MEDIA_ROOT = rel('static')
-MEDIA_URL = '/static/'
+MEDIA_ROOT = rel('media')
+MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'bbi2o_ossr*(7*r1vri)ug)+yyh1=0(9-ham#u13gihda6iv@f'
 
-if DEBUG:
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+if not DEBUG:
     TEMPLATE_LOADERS = (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )
-else:
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', (
-            'django.template.loaders.filesystem.Loader',
-            'django.template.loaders.app_directories.Loader',
-        )),
-    )
+        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
