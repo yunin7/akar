@@ -1,0 +1,37 @@
+﻿{% extends 'base.html' %}
+{% load comments %}
+{% block content %}
+<h1>Объекты недвижимости</h1>
+{% if object_list|length %}
+    <ul style="min-width: 500px;">
+    {% for object in object_list %}
+        <li class="blogitem">
+          {% get_comment_count for object as comment_count %}
+          {% get_comment_form for object as comment_form %}
+        <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
+        <div class="blogbody" style="margin: 1em 0;">
+          <p>{{ object.title }}</p>
+        </div>
+        <div style="clear:left"> &nbsp; </div>
+        <small>Комментарии: [{{ comment_count }}]</small></br>
+        <small onClick="onSmall({{ object.id }})" style="text-aling: right;">Добавить</small>
+          <div id="comment{{ object.id }}" style="display: none;">
+                <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+                <table>
+                  {{ comment_form }}
+                  <tr>
+                    <td></td>
+                    <td><input type="submit" name="preview" class="submit-post" value="Preview"></td>
+                  </tr>
+                </table>
+                </form>
+          </div>
+          </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>объектов нет</p>
+{% endif %}
+<p><small>Yunin Ivan 2010 &copy;</small></p>
+</div> <!--idblog-->
+{% endblock%}

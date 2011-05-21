@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
-# Object Application
-# (c) Yunin Ivan yunin7@inbox.ru 2011
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
-from django.template import loader, Context
-from django.http import HttpResponse
-from django.core.context_processors import csrf
-
-from realty.models import RealObject, Gals
+from realty.forms import SearchForm
+from realty.models import Property
 
 
-def realty(request):
-    realty = RealObject.objects.all()
-    gals = Gals.objects.all()
-    t = loader.get_template('realty.html')
-    ctx = { 'realty': realty, 'gals': gals,}
-    ctx.update(csrf(request))
-    c = Context(ctx)
-    return HttpResponse(t.render(c))
+class PropertyListView(ListView):
+    model = Property
+
+    def get(self, request, *args, **kwargs):
+        filter = kwargs
+        form = SearchForm(request.GET)
+        filter.update(form.filter())
+        self.object_list = self.get_queryset().filter(**filter)
+        context = self.get_context_data(
+            object_list=self.object_list,
+            kwargs=kwargs
+        )
+        return self.render_to_response(context)
+
+
+class PropertyDetailView(DetailView):
+    model = Property

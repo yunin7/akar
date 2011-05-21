@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 # Object Application
 # (c) Yunin Ivan yunin7@inbox.ru 2011
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('blog.views',
-  url(r'^$', 'archive'),
-  url(r'^(?P<idblog>\d+)/$', 'blogitem'),
+from .views import EntryListView, EntryDetailView
+
+
+urlpatterns = patterns('',
+    url(r'^$', EntryListView.as_view(), name='entry-list'),
+    url(r'^(?P<pk>\d+)/$', EntryDetailView.as_view(), name='entry-detail'),
 )

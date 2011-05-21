@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
-import os, sys
+from os import path
 
 def rel(*args):
-    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *args)
+    return path.join(path.abspath(path.dirname(__file__)), *args)
 
 DEBUG = True
 
@@ -47,6 +46,9 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
+STATIC_ROOT = rel('static')
+STATIC_URL = '/static/'
+
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin/media/'
@@ -58,9 +60,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
-if not DEBUG:
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
@@ -68,7 +67,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
+    "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
+    'news.context_processors.latest',
+    'realty.context_processors.search_form',
+    'realty.context_processors.towns',
+    'realty.context_processors.types',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,7 +102,6 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.comments',
-
     # dependencies
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/
@@ -111,4 +114,18 @@ INSTALLED_APPS = (
     'registration',
 )
 
-
+if DEBUG:
+    INSTALLED_APPS += (
+        'django_extensions',
+        'debug_toolbar',
+    )
+    MIDDLEWARE_CLASSES += (
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    )
+    INTERNAL_IPS = ('127.0.0.1',)
+    DEBUG_TOOLBAR_CONFIG = dict(
+        INTERCEPT_REDIRECTS=False
+    )
+else:
+    TEMPLATE_LOADERS = (
+        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),)
