@@ -4,7 +4,7 @@ from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from realty.managers import TypeManager, TownManager
+from managers import TypeManager, TownManager
 
 
 class Town(models.Model):

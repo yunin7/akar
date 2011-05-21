@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from realty.models import Image, Property, Town, Type
+from models import Image, Property, Town, Type
 
 
 class GalsInLine(admin.TabularInline):

@@ -1,4 +1,4 @@
-from news.models import News
+from models import News
 
 def latest(request):
     '''5 latest news'''

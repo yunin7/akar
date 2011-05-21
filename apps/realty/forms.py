@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-from realty.models import Town, Type
+from models import Town, Type
 
 
 class SearchForm(forms.Form):

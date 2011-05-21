@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # (c) Yunin Ivan yunin7@inbox.ru 2011
+from django.core.urlresolvers import reverse
 from django.db import models
 
 
@@ -17,6 +18,9 @@ class Gallery(models.Model):
 
     def __unicode__(self):
         return u'{title}'.format(**self.__dict__)
+
+    def get_absolute_url(self):
+        return reverse('gallery-list', kwargs={'pk': self.pk})
 
 
 class Image(models.Model):

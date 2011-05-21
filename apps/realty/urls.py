@@ -3,7 +3,7 @@
 # (c) Yunin Ivan yunin7@inbox.ru 2011
 from django.conf.urls.defaults import *
 
-from realty.views import PropertyListView, PropertyDetailView
+from views import PropertyListView, PropertyDetailView
 
 
 urlpatterns = patterns('',

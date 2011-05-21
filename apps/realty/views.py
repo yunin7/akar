@@ -2,8 +2,8 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from realty.forms import SearchForm
-from realty.models import Property
+from forms import SearchForm
+from models import Property
 
 
 class PropertyListView(ListView):

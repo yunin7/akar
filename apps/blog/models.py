@@ -2,7 +2,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from common.models import PostBase
+from apps.common.models import PostBase
 
 
 class Entry(PostBase):

@@ -102,16 +102,16 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.comments',
+    'registration',
     # dependencies
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/
 
     # applications
-    'blog',
-    'gallery',
-    'news',
-    'realty',
-    'registration',
+    'apps.blog',
+    'apps.news',
+    'apps.realty',
+    'apps.gallery',
 )
 
 if DEBUG:
