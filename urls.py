@@ -13,9 +13,9 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^', include('realty.urls')),
-	url(r'^blog/', include('blog.urls')),
-	url(r'^news/', include('news.urls')),
+    url(r'^', include('apps.realty.urls')),
+	url(r'^blog/', include('apps.blog.urls')),
+	url(r'^news/', include('apps.news.urls')),
 	(r'^accounts/', include('registration.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^admin/', include(admin.site.urls)),

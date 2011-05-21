@@ -69,10 +69,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
-    'news.context_processors.latest',
-    'realty.context_processors.search_form',
-    'realty.context_processors.towns',
-    'realty.context_processors.types',
+    'apps.news.context_processors.latest',
+    'apps.realty.context_processors.search_form',
+    'apps.realty.context_processors.towns',
+    'apps.realty.context_processors.types',
 )
 
 MIDDLEWARE_CLASSES = (
