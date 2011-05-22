@@ -9,16 +9,12 @@ from managers import TypeManager, TownManager
 
 class ParamModel(models.Model):
     name = models.CharField(max_length=150)
-    url_name = ''
 
     class Meta:
         abstract = True
 
     def __unicode__(self):
         return u'{name}'.format(**self.__dict__)
-
-    def get_absolute_url(self):
-        return reverse(self.url_name, kwargs={'type': self.pk})
 
     @classmethod
     def choices(cls):
@@ -29,20 +25,24 @@ class ParamModel(models.Model):
 
 class Town(ParamModel):
     u'модель города'
-    url_name = 'town-properties'
 
     class Meta:
         verbose_name = u'Город'
         verbose_name_plural = u'Города'
 
+    def get_absolute_url(self):
+        return reverse('town-properties', kwargs={'town': self.pk})
+
 
 class Type(ParamModel):
     u'модель типа объекта'
-    url_name = 'type-properties'
 
     class Meta:
         verbose_name = u'Тип объекта'
         verbose_name_plural = u'Типы объектов'
+
+    def get_absolute_url(self):
+        return reverse('type-properties', kwargs={'type': self.pk})
 
 
 class Property(models.Model):
