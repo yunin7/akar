@@ -7,35 +7,42 @@ from django.db import models
 from managers import TypeManager, TownManager
 
 
-class Town(models.Model):
-    u'модель города'
+class ParamModel(models.Model):
     name = models.CharField(max_length=150)
-    objects = TownManager()
-    
+    url_name = ''
+
+    class Meta:
+        abstract = True
+
+    def __unicode__(self):
+        return u'{name}'.format(**self.__dict__)
+
+    def get_absolute_url(self):
+        return reverse(self.url_name, kwargs={'type': self.pk})
+
+    @classmethod
+    def choices(cls):
+        result = [(0, u'Любой')]
+        result += cls.objects.values_list('pk', 'name')
+        return result
+
+
+class Town(ParamModel):
+    u'модель города'
+    url_name = 'town-properties'
+
     class Meta:
         verbose_name = u'Город'
         verbose_name_plural = u'Города'
 
-    def __unicode__(self):
-        return u'{name}'.format(**self.__dict__)
 
-    def get_absolute_url(self):
-        return reverse('town-properties', kwargs={'type': self.pk})
-
-class Type(models.Model):
+class Type(ParamModel):
     u'модель типа объекта'
-    name = models.CharField(max_length=150)
-    objects = TypeManager()
+    url_name = 'type-properties'
 
     class Meta:
         verbose_name = u'Тип объекта'
         verbose_name_plural = u'Типы объектов'
-    
-    def __unicode__(self):
-        return u'{name}'.format(**self.__dict__)
-
-    def get_absolute_url(self):
-        return reverse('type-properties', kwargs={'type': self.pk})
 
 
 class Property(models.Model):

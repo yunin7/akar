@@ -5,12 +5,19 @@ from models import Town, Type
 
 
 class SearchForm(forms.Form):
-    type = forms.ChoiceField(choices=Type.objects.choices(), label=u'Тип')
-    town = forms.ChoiceField(choices=Town.objects.choices(), label=u'Город')
+    type = forms.ChoiceField(label=u'Тип')
+    town = forms.ChoiceField(label=u'Город')
     price_max__gte = forms.IntegerField(label=u'минимальная стоимость')
     price_min__lte = forms.IntegerField(label=u'максимальная стоимость')
     square_max__gte = forms.IntegerField(label=u'минимальная стоимость')
     square_min__lte = forms.IntegerField(label=u'максимальная стоимость')
+
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['type'].choices = Type.choices()
+        self.fields['town'].choices = Town.choices()
+#        self.town.choices = Town.choices()
 
     def filter(self):
         result = {}
