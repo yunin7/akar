@@ -12,7 +12,6 @@ class SearchForm(forms.Form):
     square_max__gte = forms.IntegerField(label=u'минимальная стоимость')
     square_min__lte = forms.IntegerField(label=u'максимальная стоимость')
 
-
     def __init__(self, *args, **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['type'].choices = Type.choices()
