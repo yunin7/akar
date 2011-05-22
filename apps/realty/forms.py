@@ -9,8 +9,8 @@ class SearchForm(forms.Form):
     town = forms.ChoiceField(label=u'Город')
     price_max__gte = forms.IntegerField(label=u'минимальная стоимость')
     price_min__lte = forms.IntegerField(label=u'максимальная стоимость')
-    square_max__gte = forms.IntegerField(label=u'минимальная стоимость')
-    square_min__lte = forms.IntegerField(label=u'максимальная стоимость')
+    square_max__gte = forms.IntegerField(label=u'минимальная площадь')
+    square_min__lte = forms.IntegerField(label=u'максимальная площадь')
 
     def __init__(self, *args, **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
