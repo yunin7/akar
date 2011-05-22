@@ -17,7 +17,6 @@ class SearchForm(forms.Form):
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['type'].choices = Type.choices()
         self.fields['town'].choices = Town.choices()
-#        self.town.choices = Town.choices()
 
     def filter(self):
         result = {}
