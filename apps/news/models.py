@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# (c) Yunin Ivan yunin7@inbox.ru 2011
 from django.core.urlresolvers import reverse
 from django.db import models
 

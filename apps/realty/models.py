@@ -4,8 +4,6 @@ from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from managers import TypeManager, TownManager
-
 
 class ParamModel(models.Model):
     name = models.CharField(max_length=150)

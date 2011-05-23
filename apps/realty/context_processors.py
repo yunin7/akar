@@ -1,6 +1,7 @@
 from models import Town, Type
 from forms import SearchForm
 
+
 def search_form(request):
     form = SearchForm(initial=(request.GET or {}))
     return {'search_form': form}
