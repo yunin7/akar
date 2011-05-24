@@ -1,34 +1,40 @@
 {% extends 'base.html' %}
 {% load comments %}
 {% block content %}
-<div id="blog" style="min-width: 500px;">  <!--idblog-->
-  {% for post in object_list %}
-  <div class="blogitem">
-      {% get_comment_count for post as comment_count %}
-      {% get_comment_form for post as comment_form %}
-    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-    <div class="bloglogo" style="float: left;"><a href="/blog/{{ post.id }}"><img src="/static/{{ post.logo }}" style="margin: 0 20 0 0"></a></div>
-    <div class="blogbody" style="margin: 1em 0;">
-      <p>{{ post.timestamp }}</p>
-      <p>{{ post.short_text }}</p>
-    </div> 
-    <div style="clear:left"> &nbsp; </div>
-    <small>Комментарии: [{{ comment_count }}]</small></br>
-    <small onClick="onSmall({{ post.id }})" style="text-aling: right;">Добавить</small>
-      <div id="comment{{ post.id }}" style="display: none;">
+{#<div id="blog" style="min-width: 500px;">  <!--idblog-->#}
+    {% for post in object_list %}
+    <div class="blogitem">
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <div class="bloglogo">
+            <a href="/blog/{{ post.id }}"><img src="{{ MEDIA_URL }}{{ post.logo }}" style="margin: 0 20 0 0"></a>
+        </div>
+        <div class="blogbody" style="margin: 1em 0;">
+            <p>{{ post.timestamp }}</p>
+            <p>{{ post.short_text }}</p>
+        </div>
+        <div style="clear:left"> &nbsp; </div>
+        {% get_comment_count for post as comment_count %}
+        {% get_comment_form for post as comment_form %}
+        {% get_comment_list for post as comments %}
+        <small>Комментарии: [{{ comment_count }}]</small></br>
+        <div class="comments">
+            {% for comment in comments %}
+                {{ comment }}
+            {% endfor %}
+        </div>
+        <small onClick="onSmall({{ post.id }})" style="text-aling: right;">Добавить</small>
+        <div id="comment{{ post.id }}" style="display: none;">
             <form action="{% comment_form_target %}" method="post">{% csrf_token %}
             <table>
-              {{ comment_form }}
-              <tr>
-                <td></td>
-                <td><input type="submit" name="preview" class="submit-post" value="Preview"></td>
-              </tr>
+                {{ comment_form.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="preview" class="submit-post" value="Preview"></td>
+                </tr>
             </table>
             </form>
-      </div>
-  </div>
-{% endfor %}
-<p><small>Yunin Ivan 2010 &copy;</small></p>
-</div> <!--idblog-->
-
-{% endblock%}
+        </div>
+    </div>
+    {% endfor %}
+{#</div> <!--idblog-->#}
+{% endblock %}

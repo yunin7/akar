@@ -1,89 +1,109 @@
-﻿<html>
-<head>
-<style type='text/css'>
-body {
-    font-family: Arial, sans-serif;
-    font-size: 10pt;
-    text-align: left;
-    color: #edf;
-    background: #740000;
-    padding: 0 5em;
-    margin: 0;
-}
-
-a img {border: 0;}
- 
-h1 {
-    padding: 2em 1em;
-    background: #b90000;
-}
-
-h2 {
-    color: #fffc03;
-    border-bottom: 1px dotted #b90000;
-}
-
-a {color: #fffc03;}
-
-p {}
-
-.comment {}
-
-#blog { 
-    width: 70%;
-    float: left;
-}
-
-#blog { 
-    width: 70%;
-    float: left;
-}
-
-#news {
-    width: 25%;
-    float: right;
-}
-
-#users {
-    width: 25%;
-    float: right;
-}
-
-#news h2 {
-    border: 0;
-    border-bottom: 1px dotted #b90000;
-}
-
-.newstitle {color: yellow;}
-</style>
-</head>
+﻿{% load sitetree %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="cufon-active cufon-ready" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Expires" content="0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css">
+        <title>{% block title %}Недвижимость Египта{% endblock %}</title>
+    </head>
     <body>
-	    <h1><a href="{% url property-list %}">Test2.RU</a></h1>
-        <form action="{% url property-list %}">
-            {{ search_form.as_p }}
-            <button type="submit">Искать</button>
-        </form>
-    	{% block content %}
-		{% endblock %}
-        <div>
-            <h2>Меню городов</h2>
-            {% for town in towns %}
-                <p><a href="{{ town.get_absolute_url }}">{{ town }}</a></p>
-            {% endfor %}
-            <h2>Меню типов</h2>
-            {% for type in types %}
-                <p><a href="{{ type.get_absolute_url }}">{{ type }}</a></p>
-            {% endfor %}
-            <h2>Последние новости</h2>
-            {% for the_news in news %}
-                <p><a href="{{ the_news.get_absolute_url }}">{{ the_news }}</a></p>
-            {% endfor %}
+        <div id="outerwrap" class="ourbusiness">
+            <div id="innerwrap">
+
+                <!-- Header start -->
+                <div id="header">
+                    <OBJECT CLASSID="clsid27CDB6E-AE6D-llcf-96B8-444553540000" WIDTH="950" HEIGHT="204"CODEBASE="http://active.macromedia.com/flash5/cabs/">
+                    <PARAM NAME="MOVIE"VALUE="/static/swf/top_6.swf">
+                    <PARAM NAME="PLAY"VALUE="true">
+                    <PARAM NAME="LOOP"VALUE="true">
+                    <PARAM NAME="QUALITY"VALUE="high">
+                        <EMBED SRC="/static/swf/top_6.swf"WIDTH="950"HEIGHT="204"PLAY="true" LOOP="false" QUALITY="high" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?Pl_Prod_Version=ShockwaveFiash">
+                        </EMBED>
+                    </OBJECT>
+                </div>
+                <!-- Header End -->
+
+                <!-- Navigation start -->
+                <div id="nav">
+                    {% sitetree_menu from "mainmenu" include "trunk,home" %}
+                    <div id="breadcrumb">
+                        {% sitetree_breadcrumbs for "mainmenu" %}
+                    </div>
+                </div>
+                <!-- Navigation End -->
+
+                <div>
+                    <!-- Left Content Start -->
+                    <div id="leftcontent">
+                        <div class="top"><strong>Наш блог</strong></div>
+                        <ul>
+                            {% for entry in last_entries %}
+                                <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <div class="top"><strong>Недвижимость в городах</strong></div>
+                        <ul>
+                            {% for town in towns %}
+                                <li><a href="{{ town.get_absolute_url }}">{{ town.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <div class="top"><strong>Недвижимость по типам</strong></div>
+                        <ul>
+                            {% for type in types %}
+                                <li><a href="{{ type.get_absolute_url }}">{{ type.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- Left Content End -->
+
+                    <!-- Content Start -->
+                    <div id="centrecontent">
+                        <div class="printcontent"></div>
+                        {% block banner_above_h1 %}{% endblock %}
+
+                        <h1>{% block h1 %}{% endblock %}</h1>
+
+                        {% block content %}{% endblock %}
+
+                        <!-- List items Start -->
+                        {% block last_news %}{% endblock %}
+                        <!-- List items End -->
+                    </div>
+                    <!-- Content End -->
+
+                    <!-- Right Content Start -->
+                    <div id="rightcontent">
+                        <!-- "get" method used in order for the link to work, but will need to be changed to "post" in moss dev -->
+                        <div class="clearfix">
+                            <div class="resourcefinder">
+                                <h3>Поиск недвижимости</h3>
+                                {% include 'realty/search_form.html' %}
+                            </div>
+                        </div>
+
+                        <div id="">
+                            <a href="#" target="_blank">
+                                <img alt="" src="/static/images/b/banner.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Right Content End -->
+                </div>
+            </div>
+
+            <!-- Footer start -->
+            <div id="footer">
+                {% sitetree_menu from "footermenu" include "trunk" %}
+                <ul>
+                    <li>© PyStars.Com 2011</li>
+                </ul>
+            </div>
+            <!-- Footer End -->
+
         </div>
     </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <script>
-        function onSmall(id) {
-            $("#comment"+id).slideToggle('slow');
-        }
-    </script>
 </html>

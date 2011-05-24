@@ -1,0 +1,12 @@
+{% extends 'flatpages/default.html' %}
+
+{% block last_news %}
+    {% if last_news|length %}
+        {% with last_news as object_list %}
+            <div id="last_news">
+                <h4>Последние новости</h4>
+                {% include 'news/_news_list.html' %}
+            </div>
+        {% endwith %}
+    {% endif %}
+{% endblock %}

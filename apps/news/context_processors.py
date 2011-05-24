@@ -3,4 +3,4 @@ from models import News
 
 def latest(request):
     '''5 latest news'''
-    return {'news': News.objects.all()[:5]}
+    return {'last_news': News.objects.all()[:5]}

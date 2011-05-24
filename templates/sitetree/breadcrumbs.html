@@ -1,0 +1,13 @@
+{% load sitetree %}
+{% for item in sitetree_items %}
+    {% if not forloop.last %}
+        <span>
+            <a class="ms-sitemapdirectional" href="{% sitetree_url for item %}" {% if item.hint %}title="{{ item.hint }}"{% endif %}>
+                {{ item.title_resolved }}
+            </a>
+        </span>
+        <span> / </span>
+    {% else %}
+        <span class="ms-sitemapdirectional"><strong>{{ item.title_resolved }}</strong></span>
+    {% endif %}
+{% endfor %}

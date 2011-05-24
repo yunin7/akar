@@ -70,6 +70,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     'apps.news.context_processors.latest',
+    'apps.blog.context_processors.latest',
     'apps.realty.context_processors.search_form',
     'apps.realty.context_processors.towns',
     'apps.realty.context_processors.types',
@@ -103,6 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.comments',
     'registration',
+    'sitetree',
     # dependencies
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/

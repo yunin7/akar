@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load comments %}
+{% block banner_above_h1 %}
+
+{% endblock %}
+
+{% block h1 %}
+    {{ object.title }}
+{% endblock %}
+
 {% block content %}
-<h1>{{ object.title }}</h1>
-    <div>{{ object.body }}</div>
-    <p><small>Yunin Ivan 2010 &copy;</small></p>
+    <div>
+        <p class="subheader">{{ object.short_text }}</p>
+        <p>{{ object.body }}</p>
+    </div>
 {% endblock%}

@@ -1,5 +1,15 @@
 ﻿{% extends 'base.html' %}
 {% load comments %}
+{% block banner_above_h1 %}
+    <div>
+        <img alt="News and Media" src="/static/images/b/NewsAndMedia-Banner.jpg" style="border: 0px solid;" border="0">
+    </div>
+{% endblock %}
+
+{% block h1 %}
+    {{ flatpage.title }}
+{% endblock %}
+
 {% block content %}
     {{ flatpage.content }}
 {% endblock%}
