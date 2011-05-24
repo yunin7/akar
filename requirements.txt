@@ -1,5 +1,6 @@
 django
 django-registration
+django-sitetree
 django-debug-toolbar
 ipython
 django-extensions
