@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load comments %}
 {% block content %}
-{#<div id="blog" style="min-width: 500px;">  <!--idblog-->#}
     {% for post in object_list %}
     <div class="blogitem">
         <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
@@ -36,5 +35,4 @@
         </div>
     </div>
     {% endfor %}
-{#</div> <!--idblog-->#}
 {% endblock %}
