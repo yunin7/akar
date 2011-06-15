@@ -1,12 +1,23 @@
 {% extends 'flatpages/default.html' %}
+{% load thumbnail %}
+
+{% block banner_above_h1 %}
+{% if shifting_properties|length %}
+<div class="shifting-properties">
+    {% for object in shifting_properties %}
+        <img src="{% thumbnail object.image.image 100x50 %}" alt="{{ object.image. }}"/>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
 
 {% block last_news %}
-    {% if last_news|length %}
-        {% with last_news as object_list %}
-            <div id="last_news">
-                <h4>Последние новости</h4>
-                {% include 'news/_news_list.html' %}
-            </div>
-        {% endwith %}
-    {% endif %}
+{% if last_news|length %}
+    {% with last_news as object_list %}
+        <div id="last_news">
+            <h4>Последние новости</h4>
+            {% include 'news/_news_list.html' %}
+        </div>
+    {% endwith %}
+{% endif %}
 {% endblock %}

@@ -11,9 +11,12 @@ urlpatterns = patterns('',
 	(r'^news/', include('apps.news.urls')),
 	(r'^accounts/', include('registration.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
+#    (r'^photos/', 'photos.urls'),
     (r'^admin/', include(admin.site.urls)),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.STATIC_ROOT}),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}),
+#    (r'^admin/(.*)', admin.site.root),
+    (r'^photologue/', include('photologue.urls')),
 )

@@ -1,26 +1,19 @@
-{% load comments %}
 {% for post in object_list %}
     <div class="listitems presentation">
         <h5>
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </h5>
+        {% if object.image %}
+          <div class="image">
+              <a href="{{ object.get_absolute_url }}"><img src="{{ object.image.get_thumbnail_url }}"></a>
+          </div>
+        {% endif %}
         <i style="">{{ post.timestamp }}</i>
         <p>
-            {{ post.short_text }} <a href="{{ post.get_absolute_url }}"><strong>Подробнее...</strong>
+            {{ post.short_text }}
+            <a href="{{ post.get_absolute_url }}">
+                <strong>Подробнее...</strong>
+            </a>
         </p>
-{#        {% get_comment_count for post as comment_count %}#}
-{#        {% get_comment_form for post as comment_form %}#}
-{#        <p><small>Комментарии: [{{ comment_count }}]</small></p>#}
-{#        <small onClick="onSmall({{ post.id }})" style="text-aling: right;">Добавить</small>#}
-{#      <div id="comment{{ post.id }}" style="display: none;">#}
-{#            <form action="{% comment_form_target %}" method="post">{% csrf_token %}#}
-{#            <table>#}
-{#              {{ comment_form }}#}
-{#              <tr>#}
-{#                <td></td>#}
-{#                <td><input type="submit" name="preview" class="submit-post" value="Preview"></td>#}
-{#              </tr>#}
-{#            </table>#}
-{#            </form>#}
-      </div>
+    </div>
 {% endfor %}

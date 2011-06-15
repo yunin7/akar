@@ -1,12 +1,13 @@
 ﻿{% load sitetree %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html class="cufon-active cufon-ready" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Expires" content="0">
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Expires" content="0"/>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <link href="{{ STATIC_URL }}css/site.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ STATIC_URL }}css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
         <title>{% block title %}Недвижимость Египта{% endblock %}</title>
     </head>
     <body>
@@ -15,14 +16,13 @@
 
                 <!-- Header start -->
                 <div id="header">
-                    <OBJECT CLASSID="clsid27CDB6E-AE6D-llcf-96B8-444553540000" WIDTH="950" HEIGHT="204"CODEBASE="http://active.macromedia.com/flash5/cabs/">
-                    <PARAM NAME="MOVIE"VALUE="/static/swf/top_6.swf">
-                    <PARAM NAME="PLAY"VALUE="true">
-                    <PARAM NAME="LOOP"VALUE="true">
-                    <PARAM NAME="QUALITY"VALUE="high">
-                        <EMBED SRC="/static/swf/top_6.swf"WIDTH="950"HEIGHT="204"PLAY="true" LOOP="false" QUALITY="high" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?Pl_Prod_Version=ShockwaveFiash">
-                        </EMBED>
-                    </OBJECT>
+                    <object type="application/x-shockwave-flash" data="/static/swf/top_6.swf" width="950" height="204">
+                        <param name="movie" value="/static/swf/top_6.swf"/>
+                        <param name="play" value="true"/>
+                        <param name="loop" value="false"/>
+                        <param name="quality" value="high"/>
+                        <param name="wmode" value="opaque"/>
+                    </object>
                 </div>
                 <!-- Header End -->
 
@@ -84,9 +84,9 @@
                             </div>
                         </div>
 
-                        <div id="">
+                        <div>
                             <a href="#" target="_blank">
-                                <img alt="" src="/static/images/b/banner.jpg">
+                                <img alt="" src="/static/images/b/banner.jpg"/>
                             </a>
                         </div>
                     </div>
@@ -104,6 +104,12 @@
             <!-- Footer End -->
 
         </div>
+        {% if DEBUG %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.1.min.js"></script>
+        {% else %}
+            <script type="text/javascript" src="http://yandex.st/jquery/1.6.1/jquery.min.js"></script>
+        {% endif %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
     </body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </html>

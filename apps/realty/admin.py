@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from models import Image, Property, Town, Type
+from models import PropertyImage, Property, Town, Type
 
 
-class GalsInLine(admin.TabularInline):
-    model = Image
+class PropertyImages(admin.TabularInline):
+    model = PropertyImage
     extra = 1
 
 
@@ -20,11 +20,12 @@ class PropertyAdmin(admin.ModelAdmin):
                 'price_max',
                 'square_min',
                 'square_max',
-                'timestamp'
+                'timestamp',
+                'show_on_home'
             ]}
         ),
     ]
-    inlines = [GalsInLine,]
+    inlines = [PropertyImages,]
 
 
 admin.site.register(Property, PropertyAdmin)

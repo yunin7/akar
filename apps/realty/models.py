@@ -4,8 +4,12 @@ from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from apps.common.utils import get_first_or_none
+from apps.common.models import ImageBase
+
 
 class ParamModel(models.Model):
+    u"""абстрактная модель для моделей параметров"""
     name = models.CharField(max_length=150)
 
     class Meta:
@@ -22,7 +26,7 @@ class ParamModel(models.Model):
 
 
 class Town(ParamModel):
-    u'модель города'
+    u"""модель параметра город"""
 
     class Meta:
         verbose_name = u'Город'
@@ -33,7 +37,7 @@ class Town(ParamModel):
 
 
 class Type(ParamModel):
-    u'модель типа объекта'
+    u"""модель параметра типа объекта"""
 
     class Meta:
         verbose_name = u'Тип объекта'
@@ -44,7 +48,7 @@ class Type(ParamModel):
 
 
 class Property(models.Model):
-    u'модель объекта недвижимости'
+    u"""модель объекта недвижимости"""
     title = models.CharField(max_length=150)
     town = models.ForeignKey(Town, verbose_name=u'Город')
     type = models.ForeignKey(Type, verbose_name=u'Тип объекта')
@@ -53,9 +57,11 @@ class Property(models.Model):
     square_min = models.IntegerField(verbose_name=u'Минимальная площадь')
     square_max = models.IntegerField(verbose_name=u'Максимальная площадь')
     timestamp = models.DateTimeField(verbose_name=u'Дата добавления объекта',
-                                     default=datetime.now())
+                                    default=datetime.now())
     short_text =  models.TextField(verbose_name=u'Краткое описание')
-    body = models.TextField(verbose_name=u'Полное описание') 
+    body = models.TextField(verbose_name=u'Полное описание')
+    show_on_home = models.BooleanField(verbose_name=u'показывать на главной',
+                                    default=False)
 
     class Meta: 
         ordering = ('-id',)
@@ -68,12 +74,10 @@ class Property(models.Model):
     def get_absolute_url(self):
         return reverse('property-detail', kwargs={'pk': self.pk})
 
+    def image(self):
+        return get_first_or_none(self.propertyimage_set.all())
 
-class Image(models.Model):
-    u'модель изображения для объекта недвижимости'
-    title = models.CharField(max_length=150)
+
+class PropertyImage(ImageBase):
+    u"""модель изображения для объекта недвижимости"""
     property = models.ForeignKey(Property)
-    file = models.ImageField(upload_to='objects/')
-
-    def __unicode__(self):
-        return u'{title}'.format(**self.__dict__)

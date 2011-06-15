@@ -74,6 +74,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'apps.realty.context_processors.search_form',
     'apps.realty.context_processors.towns',
     'apps.realty.context_processors.types',
+    'apps.realty.context_processors.shifting_properties',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,7 +106,9 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'registration',
     'sitetree',
-    # dependencies
+    'photologue',
+    'easy_thumbnails',
+
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/
 
@@ -113,7 +116,7 @@ INSTALLED_APPS = (
     'apps.blog',
     'apps.news',
     'apps.realty',
-    'apps.gallery',
+#    'apps.gallery',
 )
 
 if DEBUG:

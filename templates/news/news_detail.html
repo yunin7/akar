@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
-{% load comments %}
 
 {% block h1 %}
     {{ object.title }}
 {% endblock %}
 
 {% block content %}
-    <div>{{ object.body }}</div>
+<div class="content news">
+    {% if object.image %}
+        <div class="images">
+            <a href="{{ object.image.get_display_url }}" rel="prettyPhoto">
+                <img src="{{ object.image.get_thumbnail_url }}" alt=""/>
+            </a>
+        </div>
+    {% endif %}
+    <p class="subheader">{{ object.short_text }}</p>
+    <p>{{ object.body }}</p>
+</div>
 {% endblock%}

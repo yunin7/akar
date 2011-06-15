@@ -1,15 +1,15 @@
 from django.contrib import admin
 
-from models import Image, Entry
+from models import EntryImage, Entry
 
 
-class GalsInLine(admin.TabularInline):
-    model = Image
+class EntryImages(admin.TabularInline):
+    model = EntryImage
     extra = 1
 
 
 class EntryAdmin(admin.ModelAdmin):
-    inlines = [GalsInLine,]
+    inlines = [EntryImages,]
     list_display = ('title', 'short_text', 'timestamp')
     list_display_links = ('title', 'short_text')
 

@@ -2,11 +2,12 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from apps.common.models import PostBase
+from apps.common.models import PostBase, ImageBase
 
 
 class News(PostBase):
-    logo = models.ImageField(upload_to='news/logos/')
+    u"""модель новости"""
+#    logo = models.ImageField(upload_to='news/logos/')
 
     class Meta:
         verbose_name = u'Новость'
@@ -14,3 +15,11 @@ class News(PostBase):
 
     def get_absolute_url(self):
         return reverse('news-detail', kwargs={'pk': self.pk})
+
+    def image(self):
+        return self.newsimage
+
+
+class NewsImage(ImageBase):
+    u"""модель изображения для новости"""
+    entry = models.OneToOneField(News)
