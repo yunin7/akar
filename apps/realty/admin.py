@@ -27,6 +27,14 @@ class PropertyAdmin(admin.ModelAdmin):
     ]
     inlines = [PropertyImages,]
 
+    class Media:
+        css = {"all" : ('jwysiwyg/jquery.wysiwyg.css',)}
+
+        js = [
+            'js/jquery-1.6.1.min.js',
+            'js/admin.js',
+            'jwysiwyg/jquery.wysiwyg.js',
+        ]
 
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(Town)

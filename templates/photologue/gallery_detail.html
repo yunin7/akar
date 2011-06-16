@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<h2>Размещена {{ object.date_added|date:"F jS, Y" }}</h2>
+{% if object.description %}<p>{{ object.description }}</p>{% endif %}
+<div class="photo-gallery">
+    {% for photo in object.public %}
+    <div class="gallery-photo">
+        <a rel="prettyPhoto[pp_gal]" href="{{ photo.get_display_url }}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+    </div>
+    {% endfor %}
+</div>
+<p><a href="{% url pl-gallery-list 1 %}">Вернуться ко всем галереям</a></p>
+
+{% endblock %}

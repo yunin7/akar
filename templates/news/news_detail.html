@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
 {% block h1 %}
     {{ object.title }}
 {% endblock %}
@@ -14,6 +18,8 @@
         </div>
     {% endif %}
     <p class="subheader">{{ object.short_text }}</p>
-    <p>{{ object.body }}</p>
+    {% autoescape off %}
+        {{ object.body }}
+    {% endautoescape %}
 </div>
 {% endblock%}

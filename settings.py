@@ -51,7 +51,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = '/admin/media/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'bbi2o_ossr*(7*r1vri)ug)+yyh1=0(9-ham#u13gihda6iv@f'
@@ -85,6 +85,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -108,6 +109,8 @@ INSTALLED_APPS = (
     'sitetree',
     'photologue',
     'easy_thumbnails',
+    'feedback',
+    'pagination',
 
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/
@@ -116,7 +119,6 @@ INSTALLED_APPS = (
     'apps.blog',
     'apps.news',
     'apps.realty',
-#    'apps.gallery',
 )
 
 if DEBUG:

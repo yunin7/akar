@@ -8,24 +8,38 @@
 {% block content %}
     <div class="content entry">
         <div class="images">
-            {% for image in object.entryimage_set.all %}
-                <a href="{{ image.get_display_url }}" rel="prettyPhoto[pp_gal]">
-                    {% if not forloop.counter0 %}
-                        <img src="{{ image.get_thumbnail_url }}" alt=""/>
-                    {% else %}
-                        <img src="{{ image.get_icon_url }}" alt=""/>
-                    {% endif %}
-                </a>
-            {% endfor %}
+          {% for image in object.propertyimage_set.all %}
+            <a href="{{ image.get_display_url }}" rel="prettyPhoto[pp_gal]">
+              {% if not forloop.counter0 %}
+                <img src="{{ image.get_thumbnail_url }}" alt=""/>
+              {% else %}
+                <img src="{{ image.get_icon_url }}" alt=""/>
+              {% endif %}
+            </a>
+          {% endfor %}
         </div>
         <p class="subheader">{{ object.short_text }}</p>
-        <p>{{ object.body }}</p>
-
-        {% get_comment_count for object as comment_count %}
-        <h2>Комментариев: {{ comment_count }} шт.</h2>
-        {% render_comment_list for object %}
-        <h2>Вы можете оставить свой комментарий, заполнив форму</h2>
-        {% render_comment_form for object %}
+        <p class="price">
+            <span>{{ object.price_min }}{% ifnotequal object.price_max object.price_min %} - {{ object.price_max }}{% endifnotequal %} USD</span>
+        </p>
+        <div class="properties">
+            <dl>
+                <dt>Площадь</dt>
+                <dd>{{ object.square_min }}{% ifnotequal object.square_max object.square_min %} - {{ object.square_max }}{% endifnotequal %} м<sup>2</sup></dd>
+            </dl>
+            <dl>
+                <dt>Город</dt>
+                <dd>{{ object.town.name }}</dd>
+            </dl>
+            <dl>
+                <dt>Тип</dt>
+                <dd>{{ object.type.name }}</dd>
+            </dl>
+        </div>
+        <div class="clearfix"></div>
+      {% autoescape off %}
+        {{ object.body }}
+      {% endautoescape %}
     </div>
 {% endblock%}
 

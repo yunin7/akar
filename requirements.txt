@@ -2,6 +2,8 @@ django
 django-registration
 django-sitetree
 django-photologue
+django-pagination
+django-feedback
 django-debug-toolbar
 ipython
 django-extensions

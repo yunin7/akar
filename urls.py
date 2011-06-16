@@ -9,14 +9,13 @@ urlpatterns = patterns('',
     (r'^properties/', include('apps.realty.urls')),
 	(r'^blog/', include('apps.blog.urls')),
 	(r'^news/', include('apps.news.urls')),
-	(r'^accounts/', include('registration.urls')),
+#	(r'^accounts/', include('registration.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
-#    (r'^photos/', 'photos.urls'),
+    (r'^feedback/', include('feedback.urls')),
+    (r'^', include('photologue.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.STATIC_ROOT}),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}),
-#    (r'^admin/(.*)', admin.site.root),
-    (r'^photologue/', include('photologue.urls')),
 )

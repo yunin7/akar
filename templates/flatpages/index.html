@@ -1,13 +1,27 @@
 {% extends 'flatpages/default.html' %}
-{% load thumbnail %}
 
 {% block banner_above_h1 %}
 {% if shifting_properties|length %}
-<div class="shifting-properties">
+<div class="content shifting-properties">
+    <div class="images">
+      {% for object in shifting_properties %}
+        <img id="thumbnail{{ forloop.counter }}" class="thumbnail {% if forloop.counter0 %}hide{% endif %}" src="{{ object.image.get_thumbnail_url }}" alt="{{ object.image.alt }}"/>
+      {% endfor %}
+      {% for object in shifting_properties %}
+        <img class="icon" id="icon{{ forloop.counter }}" src="{{ object.image.get_icon_url }}" alt="{{ object.image.alt }}" />
+      {% endfor %}
+    </div>
     {% for object in shifting_properties %}
-        <img src="{% thumbnail object.image.image 100x50 %}" alt="{{ object.image. }}"/>
+    <div id="description{{ forloop.counter }}" class="property-description {% if forloop.counter0 %}hide{% endif %}">
+        <h3>{{ object.title }}</h3>
+        <p>{{ object.short_text }}</p>
+        <p class="price">
+            <span>{{ object.price_min }}{% ifnotequal object.price_max object.price_min %} - {{ object.price_max }}{% endifnotequal %} USD</span>
+        </p>
+    </div>
     {% endfor %}
 </div>
+<div class="clearfix"></div>
 {% endif %}
 {% endblock %}
 

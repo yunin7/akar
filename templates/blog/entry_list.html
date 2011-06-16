@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load pagination_tags %}
 
 {% block title %}
     Блог
@@ -9,5 +10,27 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'blog/_entry_list.html' %}
+    {% autopaginate object_list 10 %}
+    <div class="content">
+        {% for post in object_list %}
+            <div class="listitems presentation">
+                <h5>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </h5>
+                {% if object.image %}
+                  <div class="image">
+                      <a href="{{ object.get_absolute_url }}"><img src="{{ object.image.get_thumbnail_url }}"></a>
+                  </div>
+                {% endif %}
+                <i style="">{{ post.timestamp }}</i>
+                <p>
+                    {{ post.short_text }}
+                    <a href="{{ post.get_absolute_url }}">
+                        <strong>Подробнее...</strong>
+                    </a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    {% paginate %}
 {% endblock%}

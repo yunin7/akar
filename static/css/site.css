@@ -90,6 +90,8 @@ p.subheader {
 
 p.textSinglePointIncrease { font-size: 1.3em; }
 
+.hide {display: none;}
+
 #centrecontent ol.subheader { font-size:1.4em; color:#666; }	
 
 /* == Header == */
@@ -140,7 +142,6 @@ a#logo {
 #nav li.on {
     height:35px;
     position:relative;
-    z-index:2;
 }
 
 .home #nav li.on  {
@@ -401,6 +402,21 @@ a#logo {
     margin-right: 10px;
 }
 
+.content .images img {cursor: pointer;}
+
+.content .property-description {
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.content .price {text-align: right;}
+
+.content .price span {
+    padding: 3px;
+    background: #00008b;
+    color: #ffffff;
+}
+
 .content .images .thumbnail {margin-bottom: 10px;}
 
 .content .images .icon {margin: 10px 10px 0 0;}
@@ -413,15 +429,25 @@ a#logo {
     font-size: 1.1em;
 }
 
-.content dl#comments {
+.content dl {
     font-size: 1.25em;
     clear: both;
 }
+.content .properties {float: left;}
+
+.content .properties dl dt {font-weight: bold;}
 
 .printcontent { height:17px; }
+
 .ourbusiness .printcontent { border-bottom:5px solid #274c73; }
 
-.printcontent strong { float:right; background:url(../images/bg/print-icon.gif) left center no-repeat; padding:1px 0 0 17px; cursor:pointer; }
+.printcontent strong {
+    float:right;
+    background:url(../images/bg/print-icon.gif) left center no-repeat;
+    padding:1px 0 0 17px;
+    cursor:pointer;
+}
+
 .printcontent a {
 	float:right;
 	background:url(../images/bg/rss-feed.gif) left center no-repeat;

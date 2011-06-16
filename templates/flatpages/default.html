@@ -1,10 +1,11 @@
 ﻿{% extends 'base.html' %}
 {% load comments %}
 
-{% block banner_above_h1 %}
+{% block h1 %}
+    {{ flatpage.title }}
 {% endblock %}
 
-{% block h1 %}
+{% block title %}
     {{ flatpage.title }}
 {% endblock %}
 

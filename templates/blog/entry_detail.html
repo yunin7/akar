@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load comments %}
 
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
 {% block h1 %}
     {{ object.title }}
 {% endblock %}
@@ -19,7 +23,9 @@
             {% endfor %}
         </div>
         <p class="subheader">{{ object.short_text }}</p>
-        <p>{{ object.body }}</p>
+        {% autoescape off %}
+            {{ object.body }}
+        {% endautoescape %}
 
         {% get_comment_count for object as comment_count %}
         <h2>Комментариев: {{ comment_count }} шт.</h2>
