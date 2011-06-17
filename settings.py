@@ -4,7 +4,7 @@ from os import path
 def rel(*args):
     return path.join(path.abspath(path.dirname(__file__)), *args)
 
-DEBUG = True
+DEBUG = False
 
 # start django-registration settings
 ACCOUNT_ACTIVATION_DAYS = 2 # кол-во дней для хранения кода активации
@@ -95,7 +95,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # base
+    # third-party apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -108,14 +108,12 @@ INSTALLED_APPS = (
     'registration',
     'sitetree',
     'photologue',
-    'easy_thumbnails',
     'feedback',
     'pagination',
-
     #'google_analytics',    # git://github.com/clintecker/django-google-analytics.git/
     #'registration',        # http://bitbucket.org/ubernostrum/django-registration/
 
-    # applications
+    # our apps
     'apps.blog',
     'apps.news',
     'apps.realty',
