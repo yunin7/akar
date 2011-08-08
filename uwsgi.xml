@@ -9,5 +9,5 @@
     <module>django.core.handlers.wsgi:WSGIHandler()</module>
     <chdir>/web/akar</chdir>
     <virtualenv>/home/web/.virtualenvs/akar</virtualenv>
-    <daemonize>/home/web/log/akar-uwsgi.log</daemonize>
+    <daemonize>/web/log/akar-uwsgi.log</daemonize>
 </uwsgi>
