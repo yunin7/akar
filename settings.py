@@ -4,7 +4,7 @@ from os import path
 def rel(*args):
     return path.join(path.abspath(path.dirname(__file__)), *args)
 
-DEBUG = False
+DEBUG = True
 
 # start django-registration settings
 ACCOUNT_ACTIVATION_DAYS = 2 # кол-во дней для хранения кода активации
@@ -48,6 +48,7 @@ USE_L10N = True
 
 STATIC_ROOT = rel('static')
 STATIC_URL = '/static/'
+#STATICFILES_DIRS = (rel('static'),)
 
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
@@ -121,8 +122,8 @@ INSTALLED_APPS = (
 
 if DEBUG:
     INSTALLED_APPS += (
-        'django_extensions',
         'debug_toolbar',
+        'django_extensions',
     )
     MIDDLEWARE_CLASSES += (
         'debug_toolbar.middleware.DebugToolbarMiddleware',

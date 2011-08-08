@@ -1,13 +1,9 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load comments pagination_tags %}
 
-{% block title %}
-    Недвижимость Египта
-{% endblock %}
+{% block title %}Недвижимость Египта{% endblock %}
 
-{% block h1 %}
-    Объекты недвижимости
-{% endblock %}
+{% block h1 %}Объекты недвижимости{% endblock %}
 
 {% block content %}
   {% autopaginate object_list 10 %}
@@ -33,5 +29,5 @@
   {% else %}
     <p>объектов нет</p>
   {% endif %}
-    {% paginate %}
+  {% paginate %}
 {% endblock %}

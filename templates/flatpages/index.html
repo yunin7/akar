@@ -6,6 +6,9 @@
     <div class="images">
       {% for object in shifting_properties %}
         <img id="thumbnail{{ forloop.counter }}" class="thumbnail {% if forloop.counter0 %}hide{% endif %}" src="{{ object.image.get_thumbnail_url }}" alt="{{ object.image.alt }}"/>
+          {% if forloop.counter0 %}
+            <div class="shiftedtoomuch" style="background-image: {{ object.image.get_thumbnail_url }}"></div>
+          {% endif %}
       {% endfor %}
       {% for object in shifting_properties %}
         <img class="icon" id="icon{{ forloop.counter }}" src="{{ object.image.get_icon_url }}" alt="{{ object.image.alt }}" />
@@ -13,11 +16,13 @@
     </div>
     {% for object in shifting_properties %}
     <div id="description{{ forloop.counter }}" class="property-description {% if forloop.counter0 %}hide{% endif %}">
-        <h3>{{ object.title }}</h3>
+        <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
         <p>{{ object.short_text }}</p>
+        <div class="clearfix"></div>
         <p class="price">
             <span>{{ object.price_min }}{% ifnotequal object.price_max object.price_min %} - {{ object.price_max }}{% endifnotequal %} USD</span>
         </p>
+
     </div>
     {% endfor %}
 </div>

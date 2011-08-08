@@ -1,18 +1,18 @@
 <div id="feedback_button" class="black right normal"><a href="/feedback/">feedback</a></div>
 <div id="feedback_drop" class="hiding"></div>
 <div id="feedback_popup" class="hiding">
-    <form class="feedback" action="/feedback/ajax{{ request.path }}" method="POST">
+    <form class="feedback" action="/feedback/ajax{{ request.path }}" method="post">{% csrf_token %}
         <div class="name error"> </div>
-        <label for="email">Ваш email</label>
-            <input name="email"/>
+        <label for="feedback-email">Ваш email</label>
+            <input type="text" id="feedback-email" name="email"/>
         <div class="subject error"> </div>
-        <label for="subject">Тема письма</label>
-            <input name="subject"/>
+        <label for="feedback-subject">Тема письма</label>
+            <input type="text" id="feedback-subject" name="subject"/>
         <div class="text error"> </div>
-        <label for="text">Сообщение</label>
-            <textarea name="text"></textarea>
+        <label for="feedback-text">Сообщение</label>
+            <textarea name="text" id="feedback-text" cols="40" rows="5"></textarea>
         <div class="buttons">
-            <button>Отправить</button>
+            <button type="submit">Отправить</button>
         </div>
     </form>
     <div class="thanks hiding">Спасибо за Ваше сообщение!</div>

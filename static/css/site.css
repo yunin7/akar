@@ -1,4 +1,4 @@
-﻿body {
+body {
 	font-family:Helvetica, Arial, sans-serif;
 	background:url(../images/bg/top-bg.gif) center 15px no-repeat #d9d9d9;
 	margin:0;
@@ -399,7 +399,7 @@ a#logo {
 .content .images {
     width: 200px;
     float: left;
-    margin-right: 10px;
+    margin: 5px 10px 0 0;
 }
 
 .content .images img {cursor: pointer;}
@@ -408,6 +408,15 @@ a#logo {
     font-size: 1.5em;
     padding: 10px;
 }
+.shifting-properties {
+    position: relative;
+}
+
+.content.shifting-properties .price {
+    position: absolute;
+    bottom: 1em;
+    right: 0;
+}
 
 .content .price {text-align: right;}
 
@@ -415,6 +424,11 @@ a#logo {
     padding: 3px;
     background: #00008b;
     color: #ffffff;
+}
+
+.shiftedtoomuch {
+    background-repeat: no-repeat;
+    background-position: -1000px -1000px;
 }
 
 .content .images .thumbnail {margin-bottom: 10px;}

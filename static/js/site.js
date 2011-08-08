@@ -2,7 +2,6 @@
  * Date: 24.05.11
  * Time: 21:31
  */
-
 var feedback = {};
 feedback.init = function(config) {
     if (!(config.button && config.drop && config.popup))
@@ -69,4 +68,5 @@ $(document).ready(function(){
         $("#" + this.getAttribute("id").replace('icon', 'thumbnail')).fadeIn();
         $("#" + this.getAttribute("id").replace('icon', 'description')).fadeIn();
     });
+    
 });

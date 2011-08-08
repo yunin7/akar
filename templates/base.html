@@ -1,5 +1,4 @@
-﻿{% load sitetree %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿{% load sitetree %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -31,7 +30,7 @@
                 <div id="nav">
                     {% sitetree_menu from "mainmenu" include "trunk,home" %}
                     <div id="breadcrumb">
-                        {% sitetree_breadcrumbs for "mainmenu" %}
+                        {% block breadcrumbs %}{% sitetree_breadcrumbs for "mainmenu" %}{% endblock %}
                     </div>
                 </div>
                 <!-- Navigation End -->
@@ -105,11 +104,7 @@
             <!-- Footer End -->
 
         </div>
-        {% if DEBUG %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.1.min.js"></script>
-        {% else %}
-            <script type="text/javascript" src="http://yandex.st/jquery/1.6.1/jquery.min.js"></script>
-        {% endif %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.1.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.prettyPhoto.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>

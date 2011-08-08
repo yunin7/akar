@@ -17,7 +17,7 @@ $.fn.ajaxSubmit = function(options) {
         var theform = $(this);
         $(this)
         .find("input[checked], input[type='text'], input[type='hidden'], input[type='password'], input[type='submit'], option[selected], textarea")
-        .filter(":enabled")
+//        .filter(":enabled") // hidden csrfmiddlewaretoken  input filtered by this line
         .each(function() {
             params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
         });
