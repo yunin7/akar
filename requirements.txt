@@ -1,9 +1,10 @@
 django
 django-registration
-django-sitetree
+-e git://github.com/clincher/django-sitetree.git#egg=sitetree
 django-photologue
 django-pagination
 django-feedback
 django-debug-toolbar
 ipython
 django-extensions
+PIL
