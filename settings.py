@@ -4,7 +4,7 @@ from os import path
 def rel(*args):
     return path.join(path.abspath(path.dirname(__file__)), *args)
 
-DEBUG = True
+DEBUG = False
 
 # start django-registration settings
 ACCOUNT_ACTIVATION_DAYS = 2 # кол-во дней для хранения кода активации
@@ -27,7 +27,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': rel('sqlite_mysite_db2'),
+        'NAME': rel('database.sqlite'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -46,12 +46,10 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-STATIC_ROOT = rel('static')
-STATIC_URL = '/static/'
+MEDIA_ROOT = STATIC_ROOT = rel('static')
+MEDIA_URL = STATIC_URL = '/static/'
 #STATICFILES_DIRS = (rel('static'),)
 
-MEDIA_ROOT = rel('media')
-MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
@@ -120,18 +118,7 @@ INSTALLED_APPS = (
     'apps.realty',
 )
 
-if DEBUG:
-    INSTALLED_APPS += (
-        'debug_toolbar',
-        'django_extensions',
-    )
-    MIDDLEWARE_CLASSES += (
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    )
-    INTERNAL_IPS = ('127.0.0.1',)
-    DEBUG_TOOLBAR_CONFIG = dict(
-        INTERCEPT_REDIRECTS=False
-    )
-else:
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),)
+try:
+    from settings_local import *
+except ImportError:
+    pass
