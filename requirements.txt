@@ -1,10 +1,7 @@
-django
-django-registration
--e git://github.com/clincher/django-sitetree.git#egg=sitetree
-django-photologue
-django-pagination
-django-feedback
-django-debug-toolbar
-ipython
-django-extensions
-PIL
+django==1.2
+django-registration==0.8-alpha-1
+django-sitetree==0.5.1
+django-photologue==2.3
+django-pagination==1.0.7
+django-feedback==0.4
+PIL==1.1.7
