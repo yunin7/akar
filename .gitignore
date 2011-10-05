@@ -3,3 +3,4 @@
 database.sqlite
 env/
 static/photologue/
+settings_local.py
