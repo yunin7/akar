@@ -18,10 +18,3 @@ class PostBase(models.Model):
 
     def __unicode__(self):
         return u'{title}'.format(**self.__dict__)
-
-
-class ImageBase(ImageModel):
-    alt = models.CharField(max_length=150, verbose_name=u'описание')
-
-    class Meta:
-        abstract = True

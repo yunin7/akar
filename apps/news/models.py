@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.db import models
-
-from apps.common.models import PostBase, ImageBase
+from photologue.models import ImageModel
+from apps.common.models import PostBase
 
 
 class News(PostBase):
@@ -20,6 +20,7 @@ class News(PostBase):
         return self.newsimage
 
 
-class NewsImage(ImageBase):
+class NewsImage(ImageModel):
     u"""модель изображения для новости"""
     entry = models.OneToOneField(News)
+    alt = models.CharField(max_length=150, verbose_name=u'описание')

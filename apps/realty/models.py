@@ -5,8 +5,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 from apps.common.utils import get_first_or_none
-from apps.common.models import ImageBase
-
+from photologue.models import ImageModel
 
 class ParamModel(models.Model):
     u"""абстрактная модель для моделей параметров"""
@@ -78,6 +77,7 @@ class Property(models.Model):
         return get_first_or_none(self.propertyimage_set.all())
 
 
-class PropertyImage(ImageBase):
+class PropertyImage(ImageModel):
     u"""модель изображения для объекта недвижимости"""
     property = models.ForeignKey(Property)
+    alt = models.CharField(max_length=150, verbose_name=u'описание')
