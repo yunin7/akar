@@ -1,0 +1,236 @@
+[
+    {
+        "pk": 1, 
+        "model": "sitetree.tree", 
+        "fields": {
+            "alias": "footermenu"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sitetree.tree", 
+        "fields": {
+            "alias": "mainmenu"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": null, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "/", 
+            "inbreadcrumbs": true, 
+            "title": "\u0413\u043b\u0430\u0432\u043d\u0430\u044f", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": "home", 
+            "sort_order": 1, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": false
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "property-list", 
+            "inbreadcrumbs": true, 
+            "title": "\u041e\u0431\u044a\u0435\u043a\u0442\u044b", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 2, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "entry-list", 
+            "inbreadcrumbs": true, 
+            "title": "\u0411\u043b\u043e\u0433", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 3, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "news-list", 
+            "inbreadcrumbs": true, 
+            "title": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 4, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "pl-gallery-list 1", 
+            "inbreadcrumbs": true, 
+            "title": "\u0424\u043e\u0442\u043e\u0433\u0430\u043b\u0435\u0440\u0435\u0438", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 5, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 1, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "/contacts/", 
+            "inbreadcrumbs": true, 
+            "title": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 6, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": false
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 3, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": false, 
+            "hint": "", 
+            "url": "entry-detail object.pk", 
+            "inbreadcrumbs": true, 
+            "title": "{{ object.title }}", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 7, 
+            "inmenu": false, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": null, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": true, 
+            "hint": "", 
+            "url": "/simplepage/", 
+            "inbreadcrumbs": true, 
+            "title": "\u043f\u0440\u043e\u0441\u0442\u043e \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", 
+            "tree": 1, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 8, 
+            "inmenu": true, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": false
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 2, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": false, 
+            "hint": "", 
+            "url": "property-detail object.pk", 
+            "inbreadcrumbs": true, 
+            "title": "{{ object.title }}", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 9, 
+            "inmenu": false, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "sitetree.treeitem", 
+        "fields": {
+            "parent": 4, 
+            "access_restricted": false, 
+            "description": "", 
+            "insitetree": false, 
+            "hint": "", 
+            "url": "news-detail object.pk", 
+            "inbreadcrumbs": true, 
+            "title": "{{ object.title }}", 
+            "tree": 2, 
+            "access_perm_type": 1, 
+            "alias": null, 
+            "sort_order": 10, 
+            "inmenu": false, 
+            "access_permissions": [], 
+            "hidden": false, 
+            "urlaspattern": true
+        }
+    }
+]
